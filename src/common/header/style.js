@@ -5,12 +5,15 @@ export const HeaderWrapper = styled.header`
   line-height: 50px;
   background: #e54847;
   display: flex;
-  /* position: fixed;
-  top: 0;
-  width: 100%; */
+  &.isfixed{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+  }
 `
 export const Title = styled.h1`
-  width: 100%;
+  flex: 1;
   font-size: 18px;
   color: #fff;
   text-align: center;
