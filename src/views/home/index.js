@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Movie from './movie'
+import Movie from './movie';
 import Cinema from './cinema';
 import Center from './center';
-import Tabs from '../../common/tabs'
+import Tabs from '../../common/tabs';
 
 class Home extends React.Component {
   constructor (props) {
