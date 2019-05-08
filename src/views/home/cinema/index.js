@@ -2,46 +2,36 @@ import React from 'react';
 // import Header from '@/common/header'
 import store from '@/store'
 import { InputItem, Button, Flex, List, WhiteSpace } from 'antd-mobile'
+import createActions from './store/createActions'
 
 class Cinema extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
-      inputVal: store.getState().inputVal,
-      todoList: store.getState().todoList
+      inputVal: store.getState().todo.inputVal,
+      todoList: store.getState().todo.todoList
     }
     this.setInputval = this.setInputval.bind(this)
     this.addTodo = this.addTodo.bind(this)
     this.delTodo = this.delTodo.bind(this)
     this.subDel =  store.subscribe(() => {
       this.setState(() => ({
-        inputVal: store.getState().inputVal,
-        todoList: store.getState().todoList
+        inputVal: store.getState().todo.inputVal,
+        todoList: store.getState().todo.todoList
       }))
     })
   }
 
   setInputval (value) {
-    let action = {
-      type: 'INPUT_CHANGE',
-      value
-    }
-    store.dispatch(action)
+    store.dispatch(createActions.getInputAction(value))
   }
 
   addTodo () {
-    let action = {
-      type: 'ADD_TODO'
-    }
-    store.dispatch(action)
+    store.dispatch(createActions.getAddtodoAction())
   }
 
   delTodo (index){
-    let action = {
-      type: 'DEL_TODO',
-      index
-    }
-    store.dispatch(action)
+    store.dispatch(createActions.getDeltodoAction(index))
   }
 
   render () {
@@ -61,8 +51,9 @@ class Cinema extends React.Component {
         <List>
           {
             todoList.map((item, index) => {
+              console.log(index)
               return (
-                <List.Item onClick={ this.delTodo } key={ index }>{item}</List.Item>
+                <List.Item onClick={ this.delTodo.bind(null, index) } key={ index }>{item}</List.Item>
               )
             })
           }

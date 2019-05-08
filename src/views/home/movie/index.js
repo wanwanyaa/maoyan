@@ -7,16 +7,17 @@ import {
   MovieList,
   MovieHot
 } from './style'
+import createActions from './store/createActions'
 
 class Movie extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      movieList: store.getState().movieList
+      movieList: store.getState().movie.movieList
     }
     this.subDel =  store.subscribe(() => {
       this.setState(() => ({
-        movieList: store.getState().movieList
+        movieList: store.getState().movie.movieList
       }))
     })
   }
@@ -104,11 +105,7 @@ class Movie extends React.Component {
   }
   componentDidMount () {
     http.get('/ajax/movieOnInfoList?token=').then(res=>{
-      let action ={
-        type: 'ADD_MOVIE',
-        movieList: res.movieList
-      }
-      store.dispatch(action)
+      store.dispatch(createActions.getAddMovieAction(res.movieList))
     })
   }
   componentWillUnmount () {
