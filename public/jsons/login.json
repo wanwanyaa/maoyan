@@ -1,0 +1,13 @@
+[{
+  "user": {
+    "username": "wangwei",
+    "password": "123"
+  },
+  "code": 0,
+  "msg": "登录成功啦"
+},
+{
+  "code":-1,
+  "msg":"用户名或密码错误"
+}
+]

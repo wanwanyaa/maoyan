@@ -18,9 +18,13 @@ const getAddtodoAction = () => {
 }
 
 const getDeltodoAction = (index) => {
-  return {
-    type: DEL_TODO,
-    index
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch({
+        type: DEL_TODO,
+        index
+      })
+    }, 1000)
   }
 }
 

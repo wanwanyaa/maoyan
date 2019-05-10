@@ -53,6 +53,7 @@ export const Topbar = styled.section`
 export const MovieHot = styled.div`
   margin-bottom: 50px;
   padding-right: 15px;
+  background: #fff;
   padding-top: 94px;
 `
 

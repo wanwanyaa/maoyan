@@ -4,6 +4,7 @@ import Movie from './movie';
 import Cinema from './cinema';
 import Center from './center';
 import Tabs from '../../common/tabs';
+import withLogin from '@/common/withLogin'
 
 class Home extends React.Component {
   constructor (props) {
@@ -20,8 +21,8 @@ class Home extends React.Component {
     return (
       <div>
         <Switch>
-          <Route path="/movie" component={ Movie }></Route>
-          <Route path="/cinema" component={ Cinema }></Route>
+          <Route path="/movie" component={ withLogin(Movie) }></Route>
+          <Route path="/cinema" component={ withLogin(Cinema) }></Route>
           <Route path="/center" component={ Center }></Route>
           <Redirect to="/movie"></Redirect>
         </Switch>
